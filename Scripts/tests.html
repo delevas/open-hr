@@ -1,0 +1,30 @@
+<div id="open-hours"></div>
+
+<input type="radio" name="properties" id="standard-input" value="Standard" checked><label for="standard-input">Standard</label>
+<input type="radio" name="properties" id="per-day-input" value="Per Day"><label for="per-day-input">Per Day</label>
+
+<script type="text/javascript">
+var standard = document.getElementById('standard-input');
+var per_day = document.getElementById('per-day-input');
+var elOpenHours = document.getElementById('open-hours');
+if ( standard.addEventListener ) {
+   standard.addEventListener('click', function() {
+      elOpenHours.innerHTML=('Standard');
+   }, false);
+} else if ( standard.attachEvent ) {
+   standard.attachEvent('click', function() {
+      elOpenHours.innerHTML=('Standard');
+   });
+}
+if ( per_day.addEventListener ) {
+   per_day.addEventListener('click', function() {
+      elOpenHours.innerHTML=('Per Day');
+   }, false);
+} else if ( per_day.attachEvent ) {
+   per_day.attachEvent('click', function() {
+      elOpenHours.innerHTML=('Per Day');
+   });
+}
+</script>
+
+
