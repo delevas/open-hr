@@ -18,13 +18,14 @@ var options_state = {
 
 function switchOpenHoursState( state ) {
    var selected_state = document.getElementById(options_state[state].id);
+   var label_to_display = options_state[state].label;
    if ( selected_state.addEventListener ) {
       selected_state.addEventListener('click', function() {
-         display_element.innerHTML = options_state[state].label;
+         display_element.innerHTML = label_to_display;
       }, false);
    } else if ( selected_state.attachEvent ) {
-      selected_state.attachEvent('click', function() {
-         display_element.innerHTML = options_state[state].label;
+      selected_state.attachEvent('onclick', function() {
+         display_element.innerHTML = label_to_display;
       });
    }
 }
@@ -36,5 +37,3 @@ for ( state in options_state ) {
 }
 
 </script>
-
-
