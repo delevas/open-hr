@@ -4,27 +4,37 @@
 <input type="radio" name="properties" id="per-day-input" value="Per Day"><label for="per-day-input">Per Day</label>
 
 <script type="text/javascript">
-var standard = document.getElementById('standard-input');
-var per_day = document.getElementById('per-day-input');
-var elOpenHours = document.getElementById('open-hours');
-if ( standard.addEventListener ) {
-   standard.addEventListener('click', function() {
-      elOpenHours.innerHTML=('Standard');
-   }, false);
-} else if ( standard.attachEvent ) {
-   standard.attachEvent('click', function() {
-      elOpenHours.innerHTML=('Standard');
-   });
+var display_element = document.getElementById('open-hours');
+var options_state = {
+   standard : {
+      id : 'standard-input',
+      label : 'Standard'
+   },
+   per_day : {
+      id : 'per-day-input',
+      label : 'Per Day'
+   }
+};
+
+function switchOpenHoursState( state ) {
+   var selected_state = document.getElementById(options_state[state].id);
+   if ( selected_state.addEventListener ) {
+      selected_state.addEventListener('click', function() {
+         display_element.innerHTML = options_state[state].label;
+      }, false);
+   } else if ( selected_state.attachEvent ) {
+      selected_state.attachEvent('click', function() {
+         display_element.innerHTML = options_state[state].label;
+      });
+   }
 }
-if ( per_day.addEventListener ) {
-   per_day.addEventListener('click', function() {
-      elOpenHours.innerHTML=('Per Day');
-   }, false);
-} else if ( per_day.attachEvent ) {
-   per_day.attachEvent('click', function() {
-      elOpenHours.innerHTML=('Per Day');
-   });
+
+for ( state in options_state ) {
+   if ( options_state.hasOwnProperty(state) ) {
+      switchOpenHoursState(state);  
+   }
 }
+
 </script>
 
 
